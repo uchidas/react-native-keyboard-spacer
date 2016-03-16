@@ -6,7 +6,7 @@ var React = require('react-native');
 var {
     DeviceEventEmitter,
     LayoutAnimation,
-    View, 
+    View,
     Platform
 } = React;
 
@@ -69,7 +69,7 @@ class KeyboardSpacer extends React.Component {
         this.setState({
             keyboardSpace: 0,
             isKeyboardOpened: false
-        }, () => ('onToggle' in this.props ? this.props.onToggle(true) : null));
+        }, () => ('onToggle' in this.props ? this.props.onToggle(false) : null));
     }
 
     componentDidMount() {
@@ -77,7 +77,7 @@ class KeyboardSpacer extends React.Component {
             this._listeners = [
                 DeviceEventEmitter.addListener('keyboardDidShow', this.updateKeyboardSpace),
                 DeviceEventEmitter.addListener('keyboardDidHide', this.resetKeyboardSpace)
-            ];            
+            ];
         } else {
             this._listeners = [
                 DeviceEventEmitter.addListener('keyboardWillShow', this.updateKeyboardSpace),
